@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '../utils/supabase/server'
 import NavBar from '../components/NavBar'
-import LettersList from '../components/LettersList'
+import LettersList from './LettersList'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
