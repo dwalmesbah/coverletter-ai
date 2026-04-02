@@ -47,7 +47,6 @@ export default function GeneratePage() {
 
   async function handleGenerate() {
     setError('')
-    setGeneratedLetter('')
     setCopied(false)
 
     if (!resume.trim() || !jobDescription.trim()) {

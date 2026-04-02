@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '../utils/supabase/server'
 import NavBar from '../components/NavBar'
+import LettersList from '../components/LettersList'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -45,44 +45,7 @@ export default async function DashboardPage() {
             Your Cover Letters
           </h2>
 
-          {!letters || letters.length === 0 ? (
-            <div className="bg-white border border-dashed border-gray-300 rounded-2xl p-14 text-center">
-              <p className="text-gray-500 mb-4">No cover letters yet.</p>
-              <Link
-                href="/generate"
-                className="inline-block bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
-              >
-                Generate Your First One
-              </Link>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {letters.map((letter) => {
-                const preview = letter.generated_letter
-                  ? letter.generated_letter.slice(0, 50) + '…'
-                  : '(empty)'
-                const date = new Date(letter.created_at).toLocaleDateString(
-                  'en-US',
-                  { month: 'short', day: 'numeric', year: 'numeric' }
-                )
-                return (
-                  <div
-                    key={letter.id}
-                    className="bg-white border border-gray-200 rounded-xl px-5 py-4 flex items-center justify-between"
-                  >
-                    <div>
-                      <p className="text-sm text-gray-900 font-medium">
-                        {preview}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-1 capitalize">
-                        {date} &middot; {letter.tone} tone
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+          <LettersList letters={letters} />
         </section>
       </main>
     </div>
