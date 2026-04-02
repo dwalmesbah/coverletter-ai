@@ -1,65 +1,177 @@
-import Image from "next/image";
+import Link from 'next/link'
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+      {/* Navbar */}
+      <nav className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <span className="text-xl font-bold tracking-tight">CoverLetterAI</span>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="text-sm text-gray-300 hover:text-white transition-colors px-3 py-2"
+          >
+            Log In
+          </Link>
+          <Link
+            href="/signup"
+            className="text-sm bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+          >
+            Get Started
+          </Link>
+        </div>
+      </nav>
+
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="max-w-4xl mx-auto px-6 pt-24 pb-20 text-center">
+          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+            Generate a Tailored Cover Letter
+            <br />
+            <span className="text-blue-600">in 10 Seconds</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
+            Paste your resume and job description. AI writes a professional
+            cover letter instantly.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/signup"
+            className="inline-block bg-blue-600 hover:bg-blue-500 text-white text-lg font-semibold px-8 py-4 rounded-xl shadow-lg transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            Generate My Cover Letter Free
+          </Link>
+          <p className="mt-4 text-sm text-gray-400">No credit card required</p>
+        </section>
+
+        {/* How it works */}
+        <section className="bg-zinc-50 py-20">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
+              How It Works
+            </h2>
+            <div className="grid md:grid-cols-3 gap-10">
+              {[
+                {
+                  step: '1',
+                  title: 'Paste Resume & Job Description',
+                  desc: 'Copy your resume and the job posting into the tool.',
+                },
+                {
+                  step: '2',
+                  title: 'Choose Your Tone',
+                  desc: 'Pick from Formal, Friendly, or Confident to match the role.',
+                },
+                {
+                  step: '3',
+                  title: 'Get Your Letter',
+                  desc: 'Your tailored cover letter is ready in seconds. Copy and send.',
+                },
+              ].map(({ step, title, desc }) => (
+                <div key={step} className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white text-lg font-bold flex items-center justify-center mx-auto mb-4">
+                    {step}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {title}
+                  </h3>
+                  <p className="text-gray-500 text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section className="py-20">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
+              Simple Pricing
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+              {/* Free */}
+              <div className="border border-gray-200 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Free</h3>
+                <p className="text-4xl font-extrabold text-gray-900 my-4">
+                  $0
+                  <span className="text-base font-normal text-gray-400">
+                    /mo
+                  </span>
+                </p>
+                <ul className="space-y-3 text-sm text-gray-600 mb-8">
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> 2 cover letters per month
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> All tone options
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> Copy to clipboard
+                  </li>
+                </ul>
+                <Link
+                  href="/signup"
+                  className="block text-center border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 rounded-xl transition-colors"
+                >
+                  Get Started Free
+                </Link>
+              </div>
+
+              {/* Pro */}
+              <div className="border-2 border-blue-600 rounded-2xl p-8 relative">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  POPULAR
+                </span>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Pro</h3>
+                <p className="text-4xl font-extrabold text-gray-900 my-4">
+                  $9
+                  <span className="text-base font-normal text-gray-400">
+                    /mo
+                  </span>
+                </p>
+                <ul className="space-y-3 text-sm text-gray-600 mb-8">
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> Unlimited cover letters
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> All tone options
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> Copy to clipboard
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckIcon /> Priority support
+                  </li>
+                </ul>
+                <Link
+                  href="/signup"
+                  className="block text-center bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl transition-colors"
+                >
+                  Get Started with Pro
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 text-sm text-center py-6">
+        CoverLetterAI &copy; 2026
+      </footer>
     </div>
-  );
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      className="w-4 h-4 text-blue-600 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  )
 }
